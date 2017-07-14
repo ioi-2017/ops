@@ -1,0 +1,12 @@
+- apt: name=postgresql-client
+- apt: name=python-docker
+- docker_container:
+    name: postgres
+    image: hub.docker.hamravesh.ir/library/postgres:9.5
+    restart_policy: always
+    ports:
+    - "5432:5432"
+    volumes:
+    - /data/postgres/:/var/lib/postgresql/data/
+    env:
+      POSTGRES_PASSWORD: "{{ postgres_password }}"

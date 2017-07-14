@@ -1,0 +1,3 @@
+- copy:
+    src: 01cacher
+    dest: /etc/apt/apt.conf.d/

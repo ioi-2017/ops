@@ -1,0 +1,2 @@
+- apt: name=proxychains
+- template: src=proxychains.conf.j2 dest=/etc/proxychains.conf

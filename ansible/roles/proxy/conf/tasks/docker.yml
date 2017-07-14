@@ -1,0 +1,6 @@
+- file:
+    path: /etc/systemd/system/docker.service.d/
+    state: directory
+- copy:
+    src: docker.conf
+    dest: /etc/systemd/system/docker.service.d/proxy.conf

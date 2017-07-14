@@ -1,0 +1,4 @@
+- copy:
+    src: daemon.json
+    dest: /etc/docker/
+- include: install.yml

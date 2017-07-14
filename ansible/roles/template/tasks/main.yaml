@@ -1,0 +1,3 @@
+- include: disable_swap.yaml
+- include: sudoer_nopasswd.yaml
+- include: access.yaml

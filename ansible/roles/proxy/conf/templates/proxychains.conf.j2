@@ -1,0 +1,21 @@
+strict_chain
+#quiet_mode
+proxy_dns
+
+# Some timeouts in milliseconds
+tcp_read_time_out 15000
+tcp_connect_time_out 8000
+
+remote_dns_subnet 224
+
+## RFC5735 Loopback address range
+localnet 127.0.0.0/255.0.0.0
+
+## RFC1918 Private Address Ranges
+localnet 10.0.0.0/255.0.0.0
+localnet 172.16.0.0/255.240.0.0
+localnet 192.168.0.0/255.255.0.0
+
+[ProxyList]
+# proxy.local
+socks5  {{ proxychain_local_proxy_ip }} 9050

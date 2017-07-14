@@ -1,0 +1,3 @@
+- include: add.yaml
+  person: "{{ item }}"
+  with_items: "{{ owners.split(',') }}"

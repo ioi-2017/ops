@@ -1,0 +1,10 @@
+- replace:
+    dest: /etc/ssh/sshd_config
+    regexp: '^(AcceptEnv LANG LC_*)'
+    replace: '#\1'
+- apt: name={{ item }}
+  with_items:
+  - curl
+  - wget
+  - htop
+  - mc

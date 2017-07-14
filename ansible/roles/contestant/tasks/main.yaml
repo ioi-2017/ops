@@ -1,0 +1,5 @@
+- include: security.yaml
+- replace:
+    dest: /etc/ssh/sshd_config
+    regexp: '^(AcceptEnv LANG LC_*)'
+    replace: '#\1'

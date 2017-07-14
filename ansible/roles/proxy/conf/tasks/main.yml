@@ -1,0 +1,4 @@
+- apt: name=dnsmasq state=absent
+- include: apt.yml
+- include: docker.yml
+- include: proxychains.yml

@@ -1,0 +1,7 @@
+- hosts: 'all'
+  tasks:
+  - authorized_key:
+      user: ioi
+      key: "{{ item }}"
+    with_file:
+    - "pub_keys/hamed_rsa.pub"

@@ -1,0 +1,11 @@
+- apt: name="{{ item }}"
+  with_items:
+  - git
+  - curl
+  - zsh
+
+- git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/usr/local/share/oh-my-zsh
+
+- copy: src=zshrc dest=/root/.zshrc owner=root
+
+- user: name=root shell=/bin/zsh

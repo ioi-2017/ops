@@ -1,0 +1,81 @@
+[helper]
+192.168.100.191 owners=semekh
+
+[db]
+192.168.100.192 owners=semekh
+192.168.100.193 owners=hamed
+
+[monitoring]
+192.168.100.195 owners=semekh,keivan
+
+[cms-dist]
+192.168.100.110
+
+[cms-result-server]
+192.168.100.111
+
+[cms-web]
+192.168.100.112
+
+[cms-rp]
+192.168.100.113
+
+[cms-admin]
+192.168.100.114
+
+[cms-test]
+192.168.100.115
+
+[tps]
+192.168.100.120 owners=keivan
+
+[netadmin-contestants-servers]
+192.168.100.130
+
+[netadmin-contestants-executor]
+192.168.100.131
+
+[netadmin-workers-server]
+192.168.100.132
+
+[netadmin-workers-executor]
+192.168.100.133
+
+[print-system]
+192.168.100.140 owners=farzad,eqbal
+
+[translation-system]
+192.168.100.150 owners=hamid
+
+[fog]
+192.168.100.160 owners=farzad
+
+[stateful:children]
+helper
+db
+
+[cms:children]
+cms-dist
+cms-result-server
+cms-web
+cms-rp
+cms-admin
+cms-test
+
+[cms:vars]
+owners = keivan
+
+[netadmin:children]
+netadmin-contestants-servers
+netadmin-contestants-executor
+netadmin-workers-server
+netadmin-workers-executor
+
+[netadmin:vars]
+owners = hamed
+
+[docker:children]
+helper
+db
+netadmin-contestants-executor
+netadmin-workers-executor

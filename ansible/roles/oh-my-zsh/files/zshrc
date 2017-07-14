@@ -1,0 +1,70 @@
+# Path to your oh-my-zsh configuration.
+ZSH=/usr/local/share/oh-my-zsh
+export HISTCONTROL=erasedups
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="aussiegeek"
+
+# Set to this to use case-sensitive completion
+# CASE_SENSITIVE="true"
+
+# Uncomment this to disable bi-weekly auto-update checks
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment to change how often before auto-updates occur? (in days)
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment following line if you want to disable colors in ls
+# DISABLE_LS_COLORS="true"
+
+# Uncomment following line if you want to disable autosetting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment following line if you want to disable command autocorrection
+# DISABLE_CORRECTION="true"
+
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+ COMPLETION_WAITING_DOTS="true"
+
+# Uncomment following line if you want to disable marking untracked files under
+# VCS as dirty. This makes repository status check for large repositories much,
+# much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(command-not-found debian encode64 last-working-dir screen zsh-syntax-highlighting antigen) # alias-tips)
+
+source $ZSH/oh-my-zsh.sh
+#source ~/.oh-my-zsh/custom/plugins/antigen/antigen.zsh
+#source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Customize to your needs...
+export PATH=$PATH:~/bin:/usr/java/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/games:/opt/rssowl
+
+# Example aliases
+ alias zshconfig="nano ~/.zshrc && reload"
+ alias zshrc="vim ~/.zshrc && reload"
+
+ alias ohmyzsh="nano ~/.oh-my-zsh"
+ alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
+
+
+# Automatically do an ls after each cd
+cd() {
+  if [ -n "$1" ]; then
+    builtin cd "$@" && ls
+  else
+    builtin cd ~ && ls
+  fi
+}
+
+## Colorize the grep command output for ease of use (good for log files)##
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias kc='kubectl'

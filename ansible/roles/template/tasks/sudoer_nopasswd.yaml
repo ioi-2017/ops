@@ -1,0 +1,4 @@
+- copy:
+    dest: /etc/sudoers.d/nopasspwd
+    content: |
+      %sudo  ALL=(ALL) NOPASSWD:ALL

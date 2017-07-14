@@ -1,0 +1,5 @@
+- authorized_key:
+    user: ioi
+    key: "{{ item }}"
+  with_file:
+  - "pub_keys/{{ person }}_rsa.pub"

@@ -1,0 +1,10 @@
+- hosts: all
+  tasks:
+  - debug: var=vars
+- include: common.yaml
+- hosts: docker
+  roles:
+  - docker
+- hosts: db
+  roles:
+  - postgres

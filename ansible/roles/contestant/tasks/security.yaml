@@ -1,0 +1,35 @@
+# https://www.howtogeek.com/117994/how-to-disable-ubuntus-guest-session-account/
+- name: Disable Guest User
+  ini_file:
+    path: /etc/lightdm/lightdm.conf
+    section: SeatDefaults
+    option: allow-guest
+    value: 'false'
+# https://askubuntu.com/questions/106428/how-to-disable-automatic-login-in-lightdm
+- name: Disable AutoLogin
+  ini_file:
+    path: /etc/lightdm/lightdm.conf
+    section: SeatDefaults
+    option: autologin-user
+    state: absent
+
+# https://raspberrypi.stackexchange.com/questions/53149/disable-power-on-wifi-and-bluetooth-interfaces-during-boot
+- name: Disable WiFi
+  kernel_blacklist:
+    name: "{{ item }}"
+  with_items:
+  - brcmfmac
+  - brcmutil
+- name: Disable Bluetooth
+  kernel_blacklist:
+    name: "{{ item }}"
+  with_items:
+  - btbcm
+  - hci_uart
+
+# https://www.cyberciti.biz/faq/linux-disable-modprobe-loading-of-usb-storage-driver/
+- name: Disable USB Storage
+  kernel_blacklist:
+    name: "{{ item }}"
+  with_items:
+  - usb-storage

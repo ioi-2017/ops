@@ -1,0 +1,15 @@
+- user:
+    name: "{{ item.user }}"
+    password: "{{ item.hash }}"
+  with_items:
+  - user: root
+    hash: '$6$c1xTELD22sHu$8eX/3vLbTCgZvBoirPdDlR.nzkGu2vxK9kL0OQ1YLS9KMqN.Ci.TjCTf9i/W0i4V8G.hyTEdatQwED/vWv3Qe/'
+  - user: ioi
+    hash: '$6$mq4Ka.Rwuj$sDC2hgOpLTB73QtZCS5pxaCmAjXxl4FJicbf8Xor.s9s899cBA8bHn0RQKdVSxpJSa94CKFdpBH4krzj4QGYc.'
+- authorized_key:
+    user: root
+    key: "{{ item }}"
+  with_file:
+  - pub_keys/admin_rsa.pub
+  - pub_keys/kamran_rsa.pub
+  - pub_keys/semekh_rsa.pub

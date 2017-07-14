@@ -1,0 +1,4 @@
+- replace:
+    dest: /etc/fstab
+    regexp: '^(/[\S]+\s+none\s+swap )'
+    replace: '#\1'

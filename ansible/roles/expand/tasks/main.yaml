@@ -1,0 +1,10 @@
+- apt: name=scsitools
+- command: rescan-scsi-bus
+- lvg:
+    vg: template-vg
+    pvs: /dev/sdb
+- lvol:
+    vg: template-vg
+    lv: root
+    size: +100%FREE
+- command: resize2fs /dev/template-vg/root

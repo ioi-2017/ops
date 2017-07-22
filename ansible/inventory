@@ -1,54 +1,54 @@
 [helper]
-192.168.100.191 owners=semekh
+192.168.90.191 owners=semekh
 
 [db]
-192.168.100.192 owners=semekh
-192.168.100.193 owners=hamed
+192.168.90.192 owners=semekh
+192.168.90.193 owners=hamed
 
 [monitoring]
-192.168.100.195 owners=semekh,keivan
+192.168.90.195 owners=semekh,keivan
 
 [cms-dist]
-192.168.100.110
+192.168.90.110
 
 [cms-result-server]
-192.168.100.111
+192.168.90.111
 
 [cms-web]
-192.168.100.112
+192.168.90.112
 
 [cms-rp]
-192.168.100.113
+192.168.90.113
 
 [cms-admin]
-192.168.100.114
+192.168.90.114
 
 [cms-test]
-192.168.100.115
+192.168.90.115
 
 [tps]
-192.168.100.120 owners=keivan
+192.168.90.120 owners=keivan
 
 [netadmin-contestants-servers]
-192.168.100.130
+192.168.90.130
 
 [netadmin-contestants-executor]
-192.168.100.131
+192.168.90.131
 
 [netadmin-workers-server]
-192.168.100.132
+192.168.90.132
 
 [netadmin-workers-executor]
-192.168.100.133
+192.168.90.133
 
 [print-system]
-192.168.100.140 owners=farzad,eqbal
+192.168.90.140 owners=farzad,eqbal
 
 [translation-system]
-192.168.100.150 owners=hamid
+192.168.90.150 owners=hamid
 
 [fog]
-192.168.100.160 owners=farzad
+192.168.32.2 owners=farzad
 
 [stateful:children]
 helper

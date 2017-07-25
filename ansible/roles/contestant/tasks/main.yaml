@@ -1,5 +1,33 @@
-- include: security.yaml
+- file: path=/var/touch state=directory
+- copy:
+    content: |
+      Acquire::HTTP::Proxy "http://192.168.90.191:3142";
+      Acquire::HTTPS::Proxy "false";
+    dest: /etc/apt/apt.conf.d/01cacher
+# - apt: name=aptitude
+# - apt: upgrade=safe
+
+- timezone:
+    name: Asia/Tehran
+- copy: src=ntp/timesyncd.conf dest=/etc/systemd/timesyncd.conf
+- include: cups.yaml
+
+- apt: name="linux-image-generic-hwe-16.04" state=latest
+- shell: creates=/var/touch/hold-kernel   apt-mark hold linux-image-generic-hwe-16.04 && dpkg --list | grep linux-image | awk '{ print $2 }' | sort -V | sed -n '/'`uname -r`'/q;p' | xargs apt-get -y purge && touch /var/touch/hold-kernel
+
 - replace:
     dest: /etc/ssh/sshd_config
     regexp: '^(AcceptEnv LANG LC_*)'
     replace: '#\1'
+# - TODO: https://askubuntu.com/questions/114349/when-i-create-an-account-without-password-ubuntu-still-asks-for-it
+
+- copy:
+    content: |
+      # WARNING: DO NOT TOUCH - THIS FILE IS MANAGED BY ANSIBLE
+      /dev/sda1 /               ext4    errors=remount-ro 0       1
+      /dev/sda5 none            swap    sw                0       0
+    dest: /etc/fstab
+
+- include: locker.yaml
+- include: only_ioi_user.yaml
+- include: security.yaml

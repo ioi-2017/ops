@@ -1,35 +1,41 @@
 # https://www.howtogeek.com/117994/how-to-disable-ubuntus-guest-session-account/
-- name: Disable Guest User
-  ini_file:
-    path: /etc/lightdm/lightdm.conf
-    section: SeatDefaults
-    option: allow-guest
-    value: 'false'
-# https://askubuntu.com/questions/106428/how-to-disable-automatic-login-in-lightdm
-- name: Disable AutoLogin
-  ini_file:
-    path: /etc/lightdm/lightdm.conf
-    section: SeatDefaults
-    option: autologin-user
-    state: absent
+- name: Configure LightDM
+  copy:
+    src: lightdm.conf
+    dest: /etc/lightdm/lightdm.conf
 
-# https://raspberrypi.stackexchange.com/questions/53149/disable-power-on-wifi-and-bluetooth-interfaces-during-boot
+- file: path=/root/drivers/ state=directory
+
+# Disable wifi: blacklist kernel module, move module files
 - name: Disable WiFi
   kernel_blacklist:
     name: "{{ item }}"
   with_items:
   - brcmfmac
   - brcmutil
+- name: Remove wifi kernel modules
+  shell: creates="/root/drivers/wireless" mv /lib/modules/4.10.0-27-generic/kernel/drivers/net/wireless /root/drivers/
+
+# Disable bluetooth: blacklist kernel module, move module files
 - name: Disable Bluetooth
   kernel_blacklist:
     name: "{{ item }}"
   with_items:
   - btbcm
   - hci_uart
+- name: Remove bluetooth modules
+  shell: creates="/root/drivers/bluetooth" mv /lib/modules/4.10.0-27-generic/kernel/drivers/bluetooth /root/drivers/
 
-# https://www.cyberciti.biz/faq/linux-disable-modprobe-loading-of-usb-storage-driver/
-- name: Disable USB Storage
-  kernel_blacklist:
-    name: "{{ item }}"
-  with_items:
-  - usb-storage
+- name: Remove USB storage modules
+  shell: creates="/root/drivers/usb-storage.ko" mv /lib/modules/4.10.0-27-generic/kernel/drivers/usb/storage/usb-storage.ko /root/drivers/
+- copy:
+    content: |
+      rmmod usb
+      rmmod usb_storage
+      exit 0
+    dest: /etc/rc.local
+
+- copy: src=interfaces dest=/etc/network/interfaces
+
+- apt: name=auditd
+- copy: src=audit.rules dest=/etc/audit/audit.rules

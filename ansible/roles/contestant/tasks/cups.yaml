@@ -1,0 +1,3 @@
+- apt: name=cups-client
+- copy: src=cups/printers.conf dest=/etc/cups/printers.conf
+- copy: src=cups/ppd/ioi_printer.ppd dest=/etc/cups/ppd/ioi_printer.ppd

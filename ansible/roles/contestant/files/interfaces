@@ -1,0 +1,5 @@
+auto lo
+iface lo inet loopback
+
+auto enp0s25
+iface enp0s25 inet dhcp

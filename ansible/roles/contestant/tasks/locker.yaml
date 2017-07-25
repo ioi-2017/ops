@@ -1,0 +1,13 @@
+- apt: name="{{ item }}"
+  with_items:
+  - libev4
+  - libxcb-xinerama0
+- copy: src=i3lock dest=/usr/local/bin/i3lock mode=u+x
+- copy:
+    content: |
+      #!/bin/sh
+      xhost +
+    dest: /etc/display.sh
+- file:
+    path: /etc/display.sh
+    mode: u+rwx

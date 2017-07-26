@@ -1,0 +1,5 @@
+auto lo
+iface lo inet loopback
+
+auto {{ ansible_default_ipv4.alias }}
+iface {{ ansible_default_ipv4.alias }} inet dhcp

@@ -14,7 +14,7 @@
   - brcmfmac
   - brcmutil
 - name: Remove wifi kernel modules
-  shell: creates="/root/drivers/wireless" mv /lib/modules/4.10.0-27-generic/kernel/drivers/net/wireless /root/drivers/
+  shell: creates="/root/drivers/wireless" mv /lib/modules/$(uname -r)/kernel/drivers/net/wireless /root/drivers/
 
 # Disable bluetooth: blacklist kernel module, move module files
 - name: Disable Bluetooth
@@ -24,18 +24,16 @@
   - btbcm
   - hci_uart
 - name: Remove bluetooth modules
-  shell: creates="/root/drivers/bluetooth" mv /lib/modules/4.10.0-27-generic/kernel/drivers/bluetooth /root/drivers/
+  shell: creates="/root/drivers/bluetooth" mv /lib/modules/$(uname -r)/kernel/drivers/bluetooth /root/drivers/
 
 - name: Remove USB storage modules
-  shell: creates="/root/drivers/usb-storage.ko" mv /lib/modules/4.10.0-27-generic/kernel/drivers/usb/storage/usb-storage.ko /root/drivers/
+  shell: creates="/root/drivers/usb-storage.ko" mv /lib/modules/$(uname -r)/kernel/drivers/usb/storage/usb-storage.ko /root/drivers/
 - copy:
     content: |
       rmmod usb
       rmmod usb_storage
       exit 0
     dest: /etc/rc.local
-
-- copy: src=interfaces dest=/etc/network/interfaces
 
 - apt: name=auditd
 - copy: src=audit.rules dest=/etc/audit/audit.rules

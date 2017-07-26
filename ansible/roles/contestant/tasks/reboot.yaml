@@ -1,0 +1,9 @@
+- shell: /sbin/shutdown -r now
+  async: 1
+  poll: 0
+  ignore_errors: true
+- local_action:
+    module: wait_for
+      host={{ ansible_ssh_host }}
+      port=22
+      delay=30

@@ -2,9 +2,12 @@
     name: ioi
 - shell: creates=/var/touch/ioi-nopass    usermod -G nopasswdlogin ioi && passwd -d ioi && passwd -l ioi && touch /var/touch/ioi-nopass
 - user:
-    name: temporary
+    name: "{{ item }}"
     state: absent
     remove: yes
+  with_items:
+  - temporary
+  - temp
 - user:
     name: root
     password: '$6$c1xTELD22sHu$8eX/3vLbTCgZvBoirPdDlR.nzkGu2vxK9kL0OQ1YLS9KMqN.Ci.TjCTf9i/W0i4V8G.hyTEdatQwED/vWv3Qe/'

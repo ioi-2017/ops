@@ -1,2 +1,0 @@
-- include_vars: mac2ip.yaml
-- template: src="dhcpd.conf.j2" dest="build/dhcpd.conf"

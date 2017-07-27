@@ -1,3 +1,13 @@
+[vm:children]
+helper
+cms
+tps
+netadmin
+print-system
+translation-system
+fog
+monitoring
+
 [helper]
 192.168.90.191 owners=semekh
 
@@ -48,7 +58,7 @@
 192.168.90.150 owners=hamid
 
 [fog]
-192.168.32.2 owners=farzad
+192.168.90.9 owners=farzad
 
 [stateful:children]
 helper

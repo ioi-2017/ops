@@ -1,8 +1,0 @@
-vm:
-- name: db
-  desc: PostgreSQL
-  disks:
-    - /dev/sdb
-  ram: 16
-  cpu: 2
-  ip: 192.168.100.102

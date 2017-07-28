@@ -1,3 +1,0 @@
-- timezone:
-    name: Asia/Tehran
-- copy: src=ntp/timesyncd.conf dest=/etc/systemd/timesyncd.conf

@@ -6,14 +6,20 @@ netadmin
 print-system
 translation-system
 fog
+db
 monitoring
+backup
 
 [helper]
 192.168.90.191 owners=semekh
 
 [db]
-192.168.90.192 owners=semekh
+192.168.90.196 owners=semekh,keivan
+192.168.90.197 owners=semekh,keivan
 192.168.90.193 owners=hamed
+
+[backup]
+192.168.90.194 owners=semekh
 
 [monitoring]
 192.168.90.195 owners=semekh,keivan

@@ -2,7 +2,8 @@
   with_items:
   - libev4
   - libxcb-xinerama0
-- copy: src=i3lock dest=/usr/local/bin/i3lock mode=u+x
+- copy: src=i3lock dest=/usr/bin/i3lock mode=u+x
+- copy: src=i3lock.service dest=/etc/systemd/system/i3lock.service
 - copy:
     content: |
       #!/bin/sh

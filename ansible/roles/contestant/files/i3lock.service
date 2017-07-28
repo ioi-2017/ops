@@ -1,0 +1,9 @@
+[Unit]
+Description=Lock screen
+[Service]
+User=%I
+Type=simple
+Restart=always
+RestartSec=1
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/i3lock -k -i /opt/lockscreen.png --datecolor ffc200ff --timecolor ffc200ff -u -n -c 000000

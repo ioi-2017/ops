@@ -1,0 +1,6 @@
+- hosts: contestant
+  gather_facts: False
+  tasks:
+  - systemd:
+      name: i3lock
+      state: stopped

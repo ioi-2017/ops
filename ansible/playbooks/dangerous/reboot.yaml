@@ -1,0 +1,4 @@
+- hosts: contestant
+  tasks:
+  - pause: seconds=7 prompt="Sure?"
+  - shell: reboot

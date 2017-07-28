@@ -1,0 +1,9 @@
+- hosts: worker
+  roles:
+  - worker
+- hosts: worker
+  tasks:
+  - systemd:
+      state: restarted
+      enabled: true
+      name: zabbix-agent

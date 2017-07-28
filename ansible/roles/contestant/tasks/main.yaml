@@ -1,22 +1,9 @@
-- template:
-    src: static_interfaces
-    dest: /etc/network/interfaces
-  when: for_template == 'no'
-- template:
-    src: dhcp_interfaces
-    dest: /etc/network/interfaces
-  when: for_template == 'yes'
 - include: governor.yaml
 - copy:
     src: 90-disable-randomize-va-space.conf
     dest: /etc/sysctl.d/90-disable-randomize-va-space.conf
 
 - file: path=/var/touch state=directory
-- copy:
-    content: |
-      Acquire::HTTP::Proxy "http://192.168.90.191:3142";
-      Acquire::HTTPS::Proxy "false";
-    dest: /etc/apt/apt.conf.d/01cacher
 - apt: name=network-manager state=absent purge=yes
 
 - apt: name="linux-image-generic-hwe-16.04" state=latest
@@ -32,7 +19,6 @@
     dest: /etc/ssh/sshd_config
     regexp: '^(AcceptEnv LANG LC_*)'
     replace: '#\1'
-# - TODO: https://askubuntu.com/questions/114349/when-i-create-an-account-without-password-ubuntu-still-asks-for-it
 
 - copy:
     content: |

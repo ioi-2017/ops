@@ -1,0 +1,17 @@
+- hosts: contestant
+  tasks:
+  - hostname: name="pc{{ pc }}"
+
+- hosts: contestant
+  tasks:
+  - template:
+      src: static_interfaces
+      dest: /etc/network/interfaces
+
+- name: Enable/Start monitoring agent
+  hosts: contestant
+  tasks:
+  - systemd:
+      state: restarted
+      enabled: true
+      name: zabbix-agent

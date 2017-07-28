@@ -1,3 +1,0 @@
-dependencies:
-  - role: ntp
-    ntp_server: 192.168.33.1

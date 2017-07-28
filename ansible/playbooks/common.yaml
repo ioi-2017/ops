@@ -1,5 +1,0 @@
-- hosts: all
-  roles:
-  - base
-  - access
-  - apt-cacher-ng/client

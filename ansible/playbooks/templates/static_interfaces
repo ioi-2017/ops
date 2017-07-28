@@ -1,9 +1,0 @@
-auto lo
-iface lo inet loopback
-
-auto {{ ansible_default_ipv4.alias }}
-iface {{ ansible_default_ipv4.alias }} inet static
-address {{ ansible_default_ipv4.address }}
-netmask {{ ansible_default_ipv4.netmask }}
-gateway {{ ansible_default_ipv4.gateway }}
-dns-nameservers {{ ansible_dns.nameservers[0] }}

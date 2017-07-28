@@ -1,0 +1,9 @@
+- apt: name=cpufrequtils
+- lineinfile:
+    path: /etc/init.d/cpufrequtils
+    regexp: '^GOVERNOR='
+    line: 'GOVERNOR="performance"'
+- systemd:
+    state: stopped
+    enabled: false
+    name: ondemand

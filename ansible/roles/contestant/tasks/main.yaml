@@ -6,6 +6,10 @@
     src: dhcp_interfaces
     dest: /etc/network/interfaces
   when: for_template == 'yes'
+- include: governor.yaml
+- copy:
+    src: 90-disable-randomize-va-space.conf
+    dest: /etc/sysctl.d/90-disable-randomize-va-space.conf
 
 - file: path=/var/touch state=directory
 - copy:

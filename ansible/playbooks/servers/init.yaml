@@ -1,0 +1,4 @@
+- include: common.yaml
+- hosts: docker
+  roles:
+  - docker

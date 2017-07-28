@@ -1,0 +1,8 @@
+- apt: name=zabbix-agent
+  register: result
+- copy: src=ioi.conf dest=/etc/zabbix/zabbix_agentd.conf.d/ioi.conf
+- systemd:
+    state: stopped
+    enabled: false
+    name: zabbix-agent
+  when: result.changed

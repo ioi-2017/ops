@@ -1,0 +1,24 @@
+- apt: name="{{ item }}"
+  with_items:
+  - rsync
+  - btrfs-tools
+- shell: creates=/backup.fs dd if=/dev/zero of=/backup.fs bs=1M count=100K
+  register: result
+- shell: creates=/dev/loop1 losetup -d /dev/loop1 && losetup /dev/loop1 /backup.fs
+- shell: mkfs.btrfs -f /dev/loop1
+  when: result.changed
+- file: path=/backup/ state=directory
+- mount:
+    path: /backup
+    src: /dev/loop1
+    fstype: btrfs
+    opts: compress=lzo
+    state: present
+- synchronize:
+    src: backupista/
+    dest: /backupista/
+- cron:
+    name: "backup_snapshot"
+    minute: "*/1"
+    job: "/backupista/snapshot.sh >/var/log/backupista.log 2>&1"
+    # special_time: reboot

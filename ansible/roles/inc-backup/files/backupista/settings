@@ -1,0 +1,20 @@
+# Remote user for ssh
+remote_user=root
+
+# Competition day
+DAY=ioi-0
+
+# Mind the slash at then end of the path
+home=/home/ioi
+backup_path=$home
+restore_path=$home/backups/$DAY
+
+# Rsync command
+bdir=$(dirname "$0")
+rsync=(rsync -rlt --chmod=ugo=rwX --max-size=10m --exclude-from=$bdir/exclude -e 'ssh -oStrictHostKeyChecking=no')
+
+
+ROOT_VOL=/backup
+DAY_PATH=$ROOT_VOL/$DAY
+DATA_VOL=$DAY_PATH/data
+SNAP_PATH=$DAY_PATH/snap

@@ -1,4 +1,5 @@
 #!/bin/bash
+. $(dirname "$0")/settings
 timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
 
 echo "$timestamp: Snapshotting!"

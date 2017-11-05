@@ -2,7 +2,7 @@
 remote_user=root
 
 # Competition day
-DAY=ioi-0
+DAY=ioi-2
 
 # Mind the slash at then end of the path
 home=/home/ioi

@@ -1,0 +1,5 @@
+- hosts: contestant
+  gather_facts: false
+  tasks:
+  - copy: src=disable-thp dest=/etc/init.d/disable-thp
+  - command: reboot

@@ -1,0 +1,6 @@
+- hosts: contestant
+  gather_facts: false
+  tasks:
+  - user:
+      name: ioi
+      shell: /bin/bash

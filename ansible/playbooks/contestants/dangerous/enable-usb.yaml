@@ -1,0 +1,5 @@
+- hosts: contestant
+  gather_facts: False
+  tasks:
+  - pause: seconds=7 prompt="Sure?"
+  - shell: cp -r /root/drivers/usb-storage.ko /lib/modules/4.8.0-36-generic/kernel/drivers/usb/storage/usb-storage.ko
